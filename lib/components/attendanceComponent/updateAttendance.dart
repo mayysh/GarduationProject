@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ppu_attendance/components/drawer.dart';
 
-class TakeStudents extends StatefulWidget {
-  TakeStudents({Key? key}) : super(key: key);
+class UpdateAttendance extends StatefulWidget {
+  UpdateAttendance({Key? key}) : super(key: key);
 
   @override
-  State<TakeStudents> createState() => TtakeStudentsState();
+  State<UpdateAttendance> createState() => TUpdateAttendanceState();
 }
 
-class TtakeStudentsState extends State<TakeStudents> {
+class TUpdateAttendanceState extends State<UpdateAttendance> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Students Attendance",
+          "Update Students Attendance",
           style: GoogleFonts.roboto(
               // fontSize: 60,
               ),
@@ -236,7 +236,7 @@ class TtakeStudentsState extends State<TakeStudents> {
               height: 50,
               child: ElevatedButton.icon(
                 icon: Icon(Icons.check_circle_outline),
-                label: Text("Done"),
+                label: Text("Save Update"),
                 onPressed: () {},
               ),
             ),

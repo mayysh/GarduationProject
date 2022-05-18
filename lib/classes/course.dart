@@ -14,4 +14,23 @@ class Course {
     required this.instructorNo,
     required this.droupSectionId,
   });
+
+ // named constructor
+  Course.fromJson(Map<String, dynamic> json)
+      : courseNo = json['courseNo'],
+        sectionNo = json['sectionNo'],
+        capacity = json['capacity'],
+        instructorNo = json['instructorNo'],
+        droupSectionId = json['droupSectionId'];
+
+  // method
+  Map<String, dynamic> toJson() {
+    return {
+      'courseNo': courseNo,
+      'sectionNo': sectionNo,
+      'capacity': capacity,
+      'instructorNo': instructorNo,
+      'droupSectionId': droupSectionId,
+    };
+  }
 }

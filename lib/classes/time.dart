@@ -19,7 +19,8 @@ class Time {
 
   // named constructor
   Time.fromJson(Map<String, dynamic> json)
-      : acdYear = json['acdYear'],
+      : id = json['id'],
+        acdYear = json['acdYear'],
         semesterNo = json['semesterNo'],
         roomNo = json['roomNo'],
         buildingNo = json['buildingNo'],
@@ -29,6 +30,7 @@ class Time {
   // method
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'acdYear': acdYear,
       'semesterNo': semesterNo,
       'roomNo': roomNo,

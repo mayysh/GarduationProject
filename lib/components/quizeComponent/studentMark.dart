@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ppu_attendance/components/drawer.dart';
+import 'package:ppu_attendance/components/quizeComponent/updateQuize.dart';
 
-class TakeStudents extends StatefulWidget {
-  TakeStudents({Key? key}) : super(key: key);
+class StudentsMarks extends StatefulWidget {
+  StudentsMarks({Key? key}) : super(key: key);
 
   @override
-  State<TakeStudents> createState() => TtakeStudentsState();
+  State<StudentsMarks> createState() => TStudentsMarksState();
 }
 
-class TtakeStudentsState extends State<TakeStudents> {
+class TStudentsMarksState extends State<StudentsMarks> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Students Attendance",
+          "Flutter / Frist Quize Mark",
           style: GoogleFonts.roboto(
               // fontSize: 60,
               ),
@@ -33,79 +34,43 @@ class TtakeStudentsState extends State<TakeStudents> {
       endDrawer: DrawerPage(),
       body: ListView(
         children: [
+          SizedBox(height: 15),
           Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                bottom: BorderSide(color: Colors.grey),
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  "1-Jan-22",
-                  style: TextStyle(
-                    fontSize: 22,
+            height: 70,
+            alignment: Alignment.center,
+            child: Card(
+              elevation: 0,
+              child: ListTile(
+                leading: Text(
+                  '1',
+                  style: GoogleFonts.roboto(
+                    fontSize: 14.0,
+                    color: Colors.grey,
+                  ),
+                ),
+                title: Text(
+                  "Assel",
+                  style: GoogleFonts.roboto(
+                    fontSize: 18.0,
                     color: Color(0xff622545),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      left: BorderSide(color: Colors.grey),
+                trailing: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.shade50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '40',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14.0,
+                      color: Colors.blue.shade700,
                     ),
                   ),
                 ),
-                Text(
-                  "Flutter",
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: Color(0xff622545),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ///////////////////////////////
-          ///
-          ///
-
-    
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Checkbox(
-                  value: this.value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      this.value = value!;
-                    });
-                  },
-                ),
               ),
             ),
           ),
-
           Container(
             height: 70,
             alignment: Alignment.center,
@@ -126,13 +91,18 @@ class TtakeStudentsState extends State<TakeStudents> {
                     color: Color(0xff622545),
                   ),
                 ),
-                trailing: Checkbox(
-                  value: this.value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      this.value = value!;
-                    });
-                  },
+                trailing: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.shade50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '40',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14.0,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -157,13 +127,18 @@ class TtakeStudentsState extends State<TakeStudents> {
                     color: Color(0xff622545),
                   ),
                 ),
-                trailing: Checkbox(
-                  value: this.value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      this.value = value!;
-                    });
-                  },
+                trailing: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.shade50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '40',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14.0,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -188,13 +163,18 @@ class TtakeStudentsState extends State<TakeStudents> {
                     color: Color(0xff622545),
                   ),
                 ),
-                trailing: Checkbox(
-                  value: this.value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      this.value = value!;
-                    });
-                  },
+                trailing: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.shade50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '40',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14.0,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -219,30 +199,70 @@ class TtakeStudentsState extends State<TakeStudents> {
                     color: Color(0xff622545),
                   ),
                 ),
-                trailing: Checkbox(
-                  value: this.value,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      this.value = value!;
-                    });
-                  },
+                trailing: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.shade50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '40',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14.0,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 70,
+            alignment: Alignment.center,
+            child: Card(
+              elevation: 0,
+              child: ListTile(
+                leading: Text(
+                  '1',
+                  style: GoogleFonts.roboto(
+                    fontSize: 14.0,
+                    color: Colors.grey,
+                  ),
+                ),
+                title: Text(
+                  "Assel",
+                  style: GoogleFonts.roboto(
+                    fontSize: 18.0,
+                    color: Color(0xff622545),
+                  ),
+                ),
+                trailing: Container(
+                  height: 40,
+                  width: 40,
+                  color: Colors.grey.shade50,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '40',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14.0,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
           SizedBox(height: 30),
-          Center(
-            child: Container(
-              height: 50,
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.check_circle_outline),
-                label: Text("Done"),
-                onPressed: () {},
-              ),
-            ),
-          ),
-          SizedBox(height: 30),
+          
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UpdateQuize()),
+                  );
+        },
+        child: Icon(Icons.edit),
       ),
     );
   }
