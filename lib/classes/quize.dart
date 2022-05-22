@@ -1,38 +1,38 @@
-class Attendance {
+class Quize {
   int? id;
+  String name;
   int sectionId;
   int lecturerId;
   int courseId;
   DateTime day;
-  bool? attendanceDone = false;
 
-  Attendance({
+  Quize({
     this.id,
     required this.sectionId,
+    required this.name,
     required this.lecturerId,
     required this.courseId,
     required this.day,
-    this.attendanceDone,
   });
 
   // named constructor
-  Attendance.fromJson(Map<String, dynamic> json)
+  Quize.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         sectionId = json['sectionId'],
+        name = json['name'],
         lecturerId = json['lecturerId'],
         courseId = json['courseId'],
-        day = DateTime.parse(json['day']),
-        attendanceDone = json['attendanceDone'] == 0 ? false : true;
+        day = DateTime.parse(json['day']);
 
   // method
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'sectionId': sectionId,
+      'name': name,
       'lecturerId': lecturerId,
       'courseId': courseId,
       'day': day.toIso8601String(),
-      'attendanceDone': attendanceDone,
     };
   }
 }

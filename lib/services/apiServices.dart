@@ -4,17 +4,86 @@ import 'dart:convert';
 import '../classes/attendance.dart';
 import '../classes/building.dart';
 import '../classes/course.dart';
-import '../classes/hall.dart';
+import '../classes/room.dart';
 import '../classes/lecturer.dart';
 import '../classes/sectionsdates.dart';
-import '../classes/student.dart';
 import '../classes/time.dart';
 import '../classes/days.dart';
 
 class APIServices {
+  final int? groupSectionId;
 
 
-  Future<List<Day>> get days  async {
+  APIServices({
+    this.groupSectionId,
+  });
+
+  Future<List<Course>> get homeData async {
+    var res = await http.get(Uri.parse("http://10.0.2.2:3000/courses/338"));
+
+    final myList = <Course>[];
+    if (res.statusCode == 200) {
+      try {
+        dynamic jsonList = json.decode(res.body);
+        if (jsonList is! List) throw FormatException();
+        for (dynamic item in jsonList) {
+          if (item is! Map<String, dynamic>) continue;
+          final courses = Course.fromJson(item);
+          myList.add(courses);
+        }
+      } on FormatException {
+        print('JSON is in the wrong format');
+      }
+      print(myList);
+      return myList;
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
+  Future<String> get courseTime async {
+    var res = await http.get(Uri.parse("http://10.0.2.2:3000/time/${this.groupSectionId}"));
+
+    if (res.statusCode == 200) {
+      try {
+        dynamic myMap = json.decode(res.body);
+        print(myMap);
+
+        if (myMap is! Map<String, dynamic>) throw FormatException();
+        final time = Time.fromJson(myMap);
+      } catch (error) {
+        print('JSON is in the wrong format');
+      }
+      return "time.startTime + time.endTime";
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
+  Future<String> get courseRoom async {
+    var res = await http.get(Uri.parse("http://10.0.2.2:3000/courses/338"));
+
+    final myList = <Course>[];
+    if (res.statusCode == 200) {
+      try {
+        dynamic jsonList = json.decode(res.body);
+        if (jsonList is! List) throw FormatException();
+        for (dynamic item in jsonList) {
+          if (item is! Map<String, dynamic>) continue;
+          final courses = Course.fromJson(item);
+          myList.add(courses);
+        }
+      } on FormatException {
+        print('JSON is in the wrong format');
+      }
+      print(myList);
+      return myList.toString();
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
+  Future<List<Day>> get days async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/days"));
 
     final myList = <Day>[];
@@ -37,7 +106,7 @@ class APIServices {
     }
   }
 
-  Future<List<Time>> get times  async {
+  Future<List<Time>> get times async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/times"));
 
     final myList = <Time>[];
@@ -60,7 +129,7 @@ class APIServices {
     }
   }
 
-   Future<List<Attendance>> get attendances  async {
+  Future<List<Attendance>> get attendances async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/attendances"));
 
     final myList = <Attendance>[];
@@ -82,7 +151,8 @@ class APIServices {
       throw Exception('Failed to load album');
     }
   }
-   Future<List<Building>> get building  async {
+
+  Future<List<Building>> get building async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/building"));
 
     final myList = <Building>[];
@@ -104,7 +174,8 @@ class APIServices {
       throw Exception('Failed to load album');
     }
   }
-   Future<List<Course>> get courses  async {
+
+  Future<List<Course>> get courses async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/courses"));
 
     final myList = <Course>[];
@@ -126,18 +197,19 @@ class APIServices {
       throw Exception('Failed to load album');
     }
   }
-   Future<List<Hall>> get halls  async {
-    var res = await http.get(Uri.parse("http://10.0.2.2:3000/halls"));
 
-    final myList = <Hall>[];
+  Future<List<Room>> get rooms async {
+    var res = await http.get(Uri.parse("http://10.0.2.2:3000/rooms"));
+
+    final myList = <Room>[];
     if (res.statusCode == 200) {
       try {
         dynamic jsonList = json.decode(res.body);
         if (jsonList is! List) throw FormatException();
         for (dynamic item in jsonList) {
           if (item is! Map<String, dynamic>) continue;
-          final hall = Hall.fromJson(item);
-          myList.add(hall);
+          final room = Room.fromJson(item);
+          myList.add(room);
         }
       } on FormatException {
         print('JSON is in the wrong format');
@@ -148,7 +220,8 @@ class APIServices {
       throw Exception('Failed to load album');
     }
   }
-   Future<List<Lecturer>> get lecturers  async {
+
+  Future<List<Lecturer>> get lecturers async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/lecturers"));
 
     final myList = <Lecturer>[];
@@ -170,29 +243,9 @@ class APIServices {
       throw Exception('Failed to load album');
     }
   }
-   Future<List<Student>> get students  async {
-    var res = await http.get(Uri.parse("http://10.0.2.2:3000/students"));
 
-    final myList = <Student>[];
-    if (res.statusCode == 200) {
-      try {
-        dynamic jsonList = json.decode(res.body);
-        if (jsonList is! List) throw FormatException();
-        for (dynamic item in jsonList) {
-          if (item is! Map<String, dynamic>) continue;
-          final student = Student.fromJson(item);
-          myList.add(student);
-        }
-      } on FormatException {
-        print('JSON is in the wrong format');
-      }
-      print(myList);
-      return myList;
-    } else {
-      throw Exception('Failed to load album');
-    }
-  }
-  Future<List<SectionsDates>> get sectionsdates  async {
+
+  Future<List<SectionsDates>> get sectionsdates async {
     var res = await http.get(Uri.parse("http://10.0.2.2:3000/sectionsdates"));
 
     final myList = <SectionsDates>[];

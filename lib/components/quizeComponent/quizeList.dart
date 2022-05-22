@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ppu_attendance/components/drawer.dart';
+import 'package:ppu_attendance/components/quizeComponent/addQuize.dart';
 import 'package:ppu_attendance/components/quizeComponent/studentMark.dart';
 
 class QuizeList extends StatefulWidget {
@@ -128,7 +129,12 @@ class TQuizeListState extends State<QuizeList> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddQuize()),
+          );
+        },
         child: Icon(Icons.add),
       ),
     );

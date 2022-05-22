@@ -1,4 +1,3 @@
-
 class Lecturer {
   int? supervisorNo;
   String supervisorArabicName;

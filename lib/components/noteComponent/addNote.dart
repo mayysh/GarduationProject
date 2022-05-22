@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ppu_attendance/classes/note.dart';
 import 'package:ppu_attendance/components/drawer.dart';
+import 'package:ppu_attendance/services/noteServices.dart';
 
 class AddNote extends StatefulWidget {
   AddNote({Key? key}) : super(key: key);
@@ -10,6 +12,9 @@ class AddNote extends StatefulWidget {
 }
 
 class TAddNoteState extends State<AddNote> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController bodyController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,6 @@ class TAddNoteState extends State<AddNote> {
       endDrawer: DrawerPage(),
       body: ListView(
         children: [
-          
           Container(
             width: double.infinity,
             height: 70,
@@ -63,6 +67,7 @@ class TAddNoteState extends State<AddNote> {
                   width: 140,
                   margin: EdgeInsets.only(top: 10, bottom: 10),
                   child: TextFormField(
+                    controller: nameController,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.text,
                     // controller: driverNameController,
@@ -99,6 +104,7 @@ class TAddNoteState extends State<AddNote> {
             // height: 500,
             margin: EdgeInsets.only(left: 15, right: 15),
             child: TextFormField(
+              controller: bodyController,
               textAlign: TextAlign.left,
               minLines: 6,
               keyboardType: TextInputType.multiline,
@@ -133,7 +139,16 @@ class TAddNoteState extends State<AddNote> {
               child: ElevatedButton.icon(
                 icon: Icon(Icons.check_circle_outline),
                 label: Text("Save New Note"),
-                onPressed: () {},
+                onPressed: () async {
+                  await NoteServices().createNote(new Note(
+                      name: nameController.text,
+                      body: bodyController.text,
+                      day: DateTime.now()));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Your Note Added'),
+                  ));
+                  Navigator.of(context).pop();
+                },
               ),
             ),
           ),

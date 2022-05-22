@@ -4,15 +4,16 @@ class Course {
   int sectionNo;
   int capacity;
   int instructorNo;
-  int droupSectionId;
- 
+  int groupSectionId;
+  String courseName;
 
   Course({
     this.courseNo,
     required this.sectionNo,
     required this.capacity,
     required this.instructorNo,
-    required this.droupSectionId,
+    required this.groupSectionId,
+    required this.courseName,
   });
 
  // named constructor
@@ -21,7 +22,8 @@ class Course {
         sectionNo = json['sectionNo'],
         capacity = json['capacity'],
         instructorNo = json['instructorNo'],
-        droupSectionId = json['droupSectionId'];
+        groupSectionId = json['groupSectionId'],
+        courseName = json['courseName'];
 
   // method
   Map<String, dynamic> toJson() {
@@ -30,7 +32,8 @@ class Course {
       'sectionNo': sectionNo,
       'capacity': capacity,
       'instructorNo': instructorNo,
-      'droupSectionId': droupSectionId,
+      'groupSectionId': groupSectionId,
+      'courseName': courseName,
     };
   }
 }
