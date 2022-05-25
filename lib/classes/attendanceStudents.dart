@@ -16,7 +16,7 @@ class AttendanceStudents {
       : id = json['id'],
         studentId = json['studentId'],
         attendanceId = json['attendanceId'],
-        absence = json['absence'];
+        absence = json['absence'] == 0 ? false : true;
 
   // method
   Map<String, dynamic> toJson() {

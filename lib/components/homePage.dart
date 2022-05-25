@@ -7,7 +7,9 @@ import 'package:ppu_attendance/components/takeStudents.dart';
 import 'package:ppu_attendance/services/apiServices.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+
+  final int lecturerId;
+  HomePage({Key? key,required this.lecturerId}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerPage(),
+      endDrawer: DrawerPage(lecturerId: widget.lecturerId,),
       appBar: AppBar(
         title: Text(
           "PPU ATTENDANCE APP",
@@ -35,7 +37,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: FutureBuilder<List<Course>>(
-        future: APIServices().homeData,
+        future: APIServices(lecturerId : widget.lecturerId).homeData,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Course>? courses = snapshot.data;
@@ -96,270 +98,6 @@ class _HomePageState extends State<HomePage> {
         },
       ),
 
-      // ListView(
-      //   children: [
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         leading: Container(
-      //             child: Text(
-      //           "C220",
-      //           style: TextStyle(
-      //             fontSize: 26,
-      //             color: Color(0xff622545),
-      //           ),
-      //         )),
-      //         title: Text(
-      //           "Flutter",
-      //           style: TextStyle(
-      //             fontSize: 24,
-      //             fontWeight: FontWeight.bold,
-      //             color: Color(0xff707070),
-      //           ),
-      //         ),
-      //         subtitle: Text(
-      //           "08:00 - 08:50",
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

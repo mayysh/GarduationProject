@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ppu_attendance/components/drawer.dart';
 
 class UpdateAttendance extends StatefulWidget {
-  UpdateAttendance({Key? key}) : super(key: key);
+  final int lecturerId;
+  UpdateAttendance({Key? key,required this.lecturerId}) : super(key: key);
 
   @override
   State<UpdateAttendance> createState() => TUpdateAttendanceState();
@@ -30,7 +31,7 @@ class TUpdateAttendanceState extends State<UpdateAttendance> {
           ),
         ),
       ),
-      endDrawer: DrawerPage(),
+      endDrawer: DrawerPage(lecturerId: widget.lecturerId,),
       body: ListView(
         children: [
           Container(

@@ -5,7 +5,8 @@ import 'package:ppu_attendance/components/drawer.dart';
 import 'package:ppu_attendance/services/noteServices.dart';
 
 class AddNote extends StatefulWidget {
-  AddNote({Key? key}) : super(key: key);
+  final int lecturerId;
+  AddNote({Key? key,required this.lecturerId}) : super(key: key);
 
   @override
   State<AddNote> createState() => TAddNoteState();
@@ -34,7 +35,7 @@ class TAddNoteState extends State<AddNote> {
           ),
         ),
       ),
-      endDrawer: DrawerPage(),
+      endDrawer: DrawerPage(lecturerId: widget.lecturerId,),
       body: ListView(
         children: [
           Container(
@@ -143,6 +144,7 @@ class TAddNoteState extends State<AddNote> {
                   await NoteServices().createNote(new Note(
                       name: nameController.text,
                       body: bodyController.text,
+                      lecturerId: widget.lecturerId,
                       day: DateTime.now()));
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('Your Note Added'),

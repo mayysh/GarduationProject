@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ppu_attendance/components/attendanceComponent/updateTotalAttendanc.dart';
+import 'package:ppu_attendance/classes/attendance.dart';
+import 'package:ppu_attendance/classes/attendanceStudents.dart';
+import 'package:ppu_attendance/classes/course.dart';
+import 'package:ppu_attendance/classes/student.dart';
 import 'package:ppu_attendance/components/drawer.dart';
-import 'package:ppu_attendance/components/quizeComponent/updateQuize.dart';
+import 'package:ppu_attendance/services/attendanceServises.dart';
+import 'package:ppu_attendance/services/studentsServices.dart';
 
 class StudentsAttendance extends StatefulWidget {
-  StudentsAttendance({Key? key}) : super(key: key);
+  final Attendance? attendance;
+  final Course? course;
+  final int lecturerId;
+  StudentsAttendance({Key? key, this.attendance, this.course,required this.lecturerId})
+      : super(key: key);
 
   @override
   State<StudentsAttendance> createState() => TStudentsAttendanceState();
@@ -32,238 +40,74 @@ class TStudentsAttendanceState extends State<StudentsAttendance> {
           ),
         ),
       ),
-      endDrawer: DrawerPage(),
+      endDrawer: DrawerPage(lecturerId: widget.lecturerId,),
       body: ListView(
         children: [
-          SizedBox(height: 15),
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Container(
-                  height: 40,
-                  width: 40,
-                  color: Colors.grey.shade50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '40',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14.0,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Container(
-                  height: 40,
-                  width: 40,
-                  color: Colors.grey.shade50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '40',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14.0,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Container(
-                  height: 40,
-                  width: 40,
-                  color: Colors.grey.shade50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '40',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14.0,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Container(
-                  height: 40,
-                  width: 40,
-                  color: Colors.grey.shade50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '40',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14.0,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Container(
-                  height: 40,
-                  width: 40,
-                  color: Colors.grey.shade50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '40',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14.0,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: Card(
-              elevation: 0,
-              child: ListTile(
-                leading: Text(
-                  '1',
-                  style: GoogleFonts.roboto(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                title: Text(
-                  "Assel",
-                  style: GoogleFonts.roboto(
-                    fontSize: 18.0,
-                    color: Color(0xff622545),
-                  ),
-                ),
-                trailing: Container(
-                  height: 40,
-                  width: 40,
-                  color: Colors.grey.shade50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '40',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14.0,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 30),
-          
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => UpdateTotalAttendance()),
+          FutureBuilder<List<AttendanceStudents>>(
+              future: AttendanceServices(attendanceId: widget.attendance!.id).attendanceStudent,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<AttendanceStudents>? studentsList = snapshot.data;
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: studentsList!.length,
+                    itemBuilder: (context, index) {
+                      return FutureBuilder<Student>(
+                          future: StudentsServices(
+                                  studentId: studentsList[index].studentId)
+                              .studentById,
+                          builder: (context, snapshot) {
+                            Student? student = snapshot.data;
+                            if (snapshot.hasData) {
+                              return Container(
+                                height: 70,
+                                alignment: Alignment.center,
+                                child: Card(
+                                  elevation: 0,
+                                  child: ListTile(
+                                    leading: Text(
+                                      student!.studentNo.toString(),
+                                      style: GoogleFonts.roboto(
+                                        fontSize: 14.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    title: Text(
+                                      student.studentNameArabic,
+                                      style: GoogleFonts.roboto(
+                                        fontSize: 18.0,
+                                        color: Color(0xff622545),
+                                      ),
+                                    ),
+                                    trailing: Container(
+                                      height: 40,
+                                      width: 40,
+                                      color: Colors.grey.shade50,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        studentsList[index].absence.toString(),
+                                        style: GoogleFonts.roboto(
+                                          fontSize: 14.0,
+                                          color: Colors.blue.shade700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return const CircularProgressIndicator();
+                            }
+                          });
+                    },
                   );
-        },
-        child: Icon(Icons.edit),
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              }),
+          SizedBox(height: 80),
+        ],
       ),
     );
   }

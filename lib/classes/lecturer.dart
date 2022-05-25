@@ -1,10 +1,10 @@
 class Lecturer {
-  int? supervisorNo;
+  int supervisorNo;
   String supervisorArabicName;
   
 
   Lecturer({
-    this.supervisorNo,
+    required this.supervisorNo,
     required this.supervisorArabicName,
   });
 

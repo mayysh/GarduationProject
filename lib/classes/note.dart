@@ -2,6 +2,7 @@ class Note {
   int? id;
   String name;
   String body;
+  int lecturerId;
   DateTime day;
 
   Note({
@@ -9,6 +10,7 @@ class Note {
     required this.name,
     required this.body,
     required this.day,
+    required this.lecturerId,
   });
 
   // named constructor
@@ -16,6 +18,7 @@ class Note {
       : id = json['id'],
         name = json['name'],
         body = json['body'],
+        lecturerId = json['lecturerId'],
         day = DateTime.parse(json['day']);
 
   // method
@@ -24,6 +27,7 @@ class Note {
       'id': id,
       'name': name,
       'body': body,
+      'lecturerId': lecturerId,
       'day': day.toIso8601String(),
     };
   }
